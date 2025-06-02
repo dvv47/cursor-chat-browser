@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { ThemeToggle } from "./theme-toggle"
-import { Settings, Search } from "lucide-react"
+import { Settings, Search, BarChart3 } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
 import { Input } from "./ui/input"
 import { useRouter, usePathname } from "next/navigation"
@@ -50,12 +50,20 @@ export function Navbar() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground" />
             )}
           </div>
-          
-          <div className="relative">
+            <div className="relative">
             <Button variant="ghost" asChild>
               <Link href="/composer">Agent Logs</Link>
             </Button>
             {pathname.startsWith('/composer') && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground" />
+            )}
+          </div>
+
+          <div className="relative">
+            <Button variant="ghost" asChild>
+              <Link href="/statistics">Statistics</Link>
+            </Button>
+            {pathname.startsWith('/statistics') && (
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground" />
             )}
           </div>
@@ -70,6 +78,19 @@ export function Navbar() {
             </TooltipTrigger>
             <TooltipContent>
               Configuration
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="/statistics" aria-label="Statistics">
+                  <BarChart3 className="h-5 w-5" />
+                </Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Database Statistics
             </TooltipContent>
           </Tooltip>
 
